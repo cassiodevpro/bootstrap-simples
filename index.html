@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Exemplo Estilizado Bootstrap + JavaScript</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+      min-height: 100vh;
+    }
+    .custom-header {
+      color: #fff;
+      background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+      border-radius: 1rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.14);
+    }
+    .btn-group-custom .btn {
+      min-width: 130px;
+      margin: 0 8px 8px 0;
+    }
+    #mensagem {
+      margin-top: 24px;
+      min-height:80px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container py-5">
+    <div class="custom-header p-4 mb-4 text-center shadow">
+      <h1 class="mb-0">Alertas Bootstrap</h1>
+      <p class="mb-0">Clique em qualquer botão para ver alertas coloridos com textos diferentes!</p>
+    </div>
+    <div class="btn-group-custom mb-3 d-flex flex-wrap justify-content-center">
+      <button class="btn btn-success" onclick="mostrarAlerta('success')">Sucesso</button>
+      <button class="btn btn-danger" onclick="mostrarAlerta('danger')">Erro</button>
+      <button class="btn btn-warning" onclick="mostrarAlerta('warning')">Atenção</button>
+      <button class="btn btn-info" onclick="mostrarAlerta('info')">Informação</button>
+      <button class="btn btn-primary" onclick="mostrarAlerta('primary')">Destacado</button>
+      <button class="btn btn-secondary" onclick="mostrarAlerta('secondary')">Secundário</button>
+    </div>
+    <div id="mensagem"></div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const textos = {
+      success: "Operação realizada com sucesso! Seja bem-vindo.",
+      danger:  "Ocorreu um erro inesperado. Tente novamente!",
+      warning: "Atenção: confira os campos obrigatórios antes de prosseguir.",
+      info:    "Esta é uma mensagem de informação importante para você.",
+      primary: "Mensagem destaque: aproveite nossas novidades exclusivas!",
+      secondary: "Esta é uma mensagem secundária, apenas para teste."
+    };
+    function mostrarAlerta(tipo) {
+      document.getElementById('mensagem').innerHTML = `
+        <div class="alert alert-${tipo} alert-dismissible fade show" role="alert">
+          <strong>${textos[tipo]}</strong>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>
